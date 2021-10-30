@@ -13,11 +13,11 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - DPoint
+  - Boss
+  - Enemy
+  - Arrow
   - 
   - 
   - 

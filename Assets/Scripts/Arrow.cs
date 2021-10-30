@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public int damage;
-
-    void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Wall")
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            Destroy(gameObject, 1);
-        }
+            Destroy(gameObject);
+        }    
+    }
+
+    private void Update() 
+    {
+        Destroy(gameObject, 10);    
     }
 }

@@ -52,5 +52,12 @@ public class ClickMovement : MonoBehaviour
             isMove = false;
             animator.SetBool("isMove", false);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            isMove = false;
+            animator.SetBool("isMove", false);
+            animator.SetTrigger("ShotToIdle");
+        }
     }
 }

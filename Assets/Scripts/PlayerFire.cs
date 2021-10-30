@@ -10,6 +10,7 @@ public class PlayerFire : MonoBehaviour
     public GameObject firePosition;
     public GameObject arrowFactory;
     public float throwPower;
+    public int arrowPower = 1;
 
     private void Awake() 
     {
