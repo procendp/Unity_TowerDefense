@@ -2,27 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneMover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GoGameScene()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(LoadSceneCoroutine());
-        }
+        StartCoroutine(LoadSceneCoroutine());
     }
 
     IEnumerator LoadSceneCoroutine()
     {
-        yield return SceneManager.LoadSceneAsync("GameScene");
+        yield return new WaitForSeconds(1f);
+        
+        LoadingSceneController.LoadScene("GameScene");
 
 
         //LoadSceneMode.Additive 매개는 전에 있던 씬을 남긴다
