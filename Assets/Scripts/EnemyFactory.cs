@@ -55,7 +55,7 @@ public class EnemyFactory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (GameManager.gm.gState == GameManager.GameState.RoundOne)
         {
             stage = Stage.Stage1;
         }
