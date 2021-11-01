@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 1724369534507954579}
   m_Layer: 9
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -670,8 +670,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297246030256729369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8565089564388474485}
   - {fileID: 5943286248904216470}
@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff63c4ae8099e477f8f890de2ecbd727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dPoint: {fileID: 5192436176696343709, guid: f504c14a5c146418d9b56b6ccf062e03, type: 3}
+  dPoint: {fileID: 9213663956377392905, guid: 4abe42e9e85fe4d5bb294c129fc0e04a, type: 3}
   maxHP: 25
   currentHP: 25
   hpSlider: {fileID: 7704538644413233574}
