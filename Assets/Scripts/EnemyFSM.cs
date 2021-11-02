@@ -89,6 +89,7 @@ public class EnemyFSM : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         Destroy(gameObject);
+        GameManager.gm.enemyCount++;
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -96,6 +97,7 @@ public class EnemyFSM : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("DPoint"))
         {
             Destroy(gameObject);
+            GameManager.gm.enemyCount++;
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Arrow"))

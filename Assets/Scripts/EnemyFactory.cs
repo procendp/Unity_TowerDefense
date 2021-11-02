@@ -10,9 +10,13 @@ public class EnemyFactory : MonoBehaviour
 
     public int skeletonNum;
     public int bossNum;
+    private int skeletonMaxNum;
+    private int bossMaxNum;
 
     int delayTime = 0;
     public int summonTime;
+
+    Transform enemy;
 
     enum Stage
     {
@@ -26,6 +30,8 @@ public class EnemyFactory : MonoBehaviour
     void Start()
     {
         stage = Stage.None;
+        skeletonMaxNum = skeletonNum;
+        bossMaxNum = bossNum;
     }
 
     void StartStage1()
@@ -50,7 +56,22 @@ public class EnemyFactory : MonoBehaviour
 
     void StartBoss()
     {
+        if (bossNum <= 0)
+        {
+            stage = Stage.None;
+            delayTime = 0;
+            return;
+        }
+
+        delayTime++;
         
+        if (delayTime > summonTime)
+        {
+            delayTime = 0;
+            bossNum -= 1;
+            GameObject boss = Instantiate(BossFactory);
+            boss.transform.position = transform.position;
+        }
     }
 
     void Update()
@@ -58,8 +79,22 @@ public class EnemyFactory : MonoBehaviour
         if (GameManager.gm.gState == GameManager.GameState.RoundOne)
         {
             stage = Stage.Stage1;
+            
+            if (GameManager.gm.enemyCount == skeletonMaxNum)
+            {
+                stage = Stage.None;
+                delayTime = 0;
+                GameManager.gm.gState = GameManager.GameState.Ready;
+                GameManager.gm.roundCount = 1;
+            }
         }
 
+        if (GameManager.gm.gState == GameManager.GameState.RoundTwo)
+        {
+            stage = Stage.BossStage;
+        }
+
+        
         switch (stage)
         {
             case Stage.None:
@@ -71,7 +106,7 @@ public class EnemyFactory : MonoBehaviour
             break;
 
             case Stage.BossStage:
-
+                StartBoss();
             break;
         }
     }

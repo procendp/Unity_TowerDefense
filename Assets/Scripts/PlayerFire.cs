@@ -23,6 +23,8 @@ public class PlayerFire : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if(GameManager.gm.gState == GameManager.GameState.Ready) return;
+
             anim.SetTrigger("doShot");
 
             RaycastHit hit;

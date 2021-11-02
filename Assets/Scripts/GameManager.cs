@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
 
     public int ReadyTime;
 
-    private int roundCount = 0;
+    public int roundCount = 0;
 
-    private bool isRound = false;
+    private bool isRound1 = false;
+
+    public int enemyCount = 0;
 
     private void Awake() 
     {
@@ -71,11 +73,11 @@ public class GameManager : MonoBehaviour
 
     void RoundOne()
     {
-        if (!roundOneUI.activeSelf && !isRound)
+        if (!roundOneUI.activeSelf && !isRound1)
         {
             roundOneUI.SetActive(true);
             StartCoroutine(UIEnd());
-            isRound = true;
+            isRound1 = true;
         }
     }
 

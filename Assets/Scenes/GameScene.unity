@@ -28776,6 +28776,8 @@ MonoBehaviour:
   BossFactory: {fileID: 2297246030256729369, guid: eb782304d722b495d99f9d4322170c28, type: 3}
   skeletonNum: 10
   bossNum: 5
+  skelMaxNum: 10
+  bossMaxNum: 5
   summonTime: 60
 --- !u!1001 &1897690607
 PrefabInstance:
@@ -30569,6 +30571,7 @@ MonoBehaviour:
   roundOneUI: {fileID: 701200952}
   ReadyTimer: {fileID: 1213802245}
   ReadyTime: 5
+  roundCount: 0
   gState: 0
 --- !u!1001 &1978270480
 PrefabInstance:
