@@ -12,6 +12,8 @@ public class EnemyFSM : MonoBehaviour
 
     Transform player;
 
+    public int moneyGain = 50;
+
     enum EnemyState
     {
         Idle,
@@ -28,8 +30,9 @@ public class EnemyFSM : MonoBehaviour
 
     public Slider hpSlider;
 
-    Animator anim;
 
+    Animator anim;
+    
     private void Awake() 
     {
         agent = GetComponent<NavMeshAgent>();    
@@ -62,6 +65,7 @@ public class EnemyFSM : MonoBehaviour
         agent.SetDestination(dPoint.position);
     }
 
+    //에너미 체력 빠지는 곳
     public void HitEnemy(int damage)
     {
         currentHP -= damage;
@@ -70,6 +74,7 @@ public class EnemyFSM : MonoBehaviour
         {
             eState = EnemyState.Die;
             Die();
+            GameStats.Money += moneyGain;
         }
     }
 
@@ -86,9 +91,10 @@ public class EnemyFSM : MonoBehaviour
         agent.enabled = false;
         anim.SetTrigger("MoveToIdle");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0);  //죽고 사라지는 속도
 
         Destroy(gameObject);
+        
         GameManager.gm.enemyCount++;
     }
 
@@ -98,19 +104,28 @@ public class EnemyFSM : MonoBehaviour
         {
             Destroy(gameObject);
             GameManager.gm.enemyCount++;
+            //도착하는대로 라이브즈 깎이게 장치해두자
+            GameStats.Lives--;
+            //EndPath();
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Arrow"))
         {
             int ArrowDamage = player.GetComponent<PlayerFire>().arrowPower;
             HitEnemy(ArrowDamage);
-        }           
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        hpSlider.value = (float)currentHP / (float)maxHP;
+        if (GameProcessManager.GameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
+        hpSlider.value = (float)currentHP / (float)maxHP;   // 15/15
 
         switch (eState)
         {

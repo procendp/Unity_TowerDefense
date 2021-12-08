@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1050152714952613611}
   - component: {fileID: 536184033020243689}
   - component: {fileID: 3884781558804661619}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BulletLV3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,3 +96,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   impactEffect: {fileID: 1129882786597722203, guid: 4ab7f0ef56f614dc5a03e45ec6803c99, type: 3}
+  bulletPower: 3

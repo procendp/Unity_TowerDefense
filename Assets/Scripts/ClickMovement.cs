@@ -19,6 +19,12 @@ public class ClickMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameProcessManager.GameIsOver)  //게임오버면 플레이어 행동 멈춤
+        {
+            this.enabled = false;
+            return;
+        }
+
         if (Input.GetMouseButton(1))
         {
             RaycastHit hit;

@@ -7,6 +7,11 @@ public class Bullet : MonoBehaviour
     public float speed = 50f;
     public GameObject impactEffect;
 
+    public int bulletPower = 1;
+    //인게임에서 탑3은 공격력 3
+
+    //public int moneyGain = 50;
+
     public void Seek(Transform _target)
     {
         target = _target;
@@ -43,6 +48,17 @@ public class Bullet : MonoBehaviour
         Destroy(effectInstantiate, 2f);
         //Destroy(target.gameObject); //적 죽음
 
+        Damage(target);
         Destroy(gameObject);
+    }
+
+    void Damage(Transform enemy)
+    {
+        EnemyFSM e = enemy.GetComponent<EnemyFSM>();
+
+        if (e != null)
+        {
+            e.HitEnemy(bulletPower);
+        }
     }
 }

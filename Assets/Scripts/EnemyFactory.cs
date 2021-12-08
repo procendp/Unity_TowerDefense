@@ -11,7 +11,7 @@ public class EnemyFactory : MonoBehaviour
     public int skeletonNum;
     public int bossNum;
     private int skeletonMaxNum;
-    private int bossMaxNum;
+    public int bossMaxNum;
 
     int delayTime = 0;
     public int summonTime;

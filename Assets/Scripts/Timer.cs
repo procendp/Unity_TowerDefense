@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
 
     public int Duration { get; private set;}
 
+    public int timeCount = 0;
+
     private int remainingDuration;
 
     private void Awake() 
@@ -25,6 +27,7 @@ public class Timer : MonoBehaviour
         uiFillImage.fillAmount = 0f;
 
         Duration = remainingDuration = 0;
+        timeCount++;
     }
 
     public Timer SetDuration(int seconds)
@@ -52,6 +55,12 @@ public class Timer : MonoBehaviour
 
     private void UpdateUI(int seconds)
     {
+        if (GameProcessManager.GameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
         uiText.text = string.Format ("{0:D2}:{1:D2}", seconds/60, seconds % 60); 
         uiFillImage.fillAmount = Mathf.InverseLerp(0, Duration, seconds);
     }

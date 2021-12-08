@@ -780,6 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dPoint: {fileID: 9213663956377392905, guid: 4abe42e9e85fe4d5bb294c129fc0e04a, type: 3}
+  moneyGain: 100
   maxHP: 25
   currentHP: 25
   hpSlider: {fileID: 7704538644413233574}
